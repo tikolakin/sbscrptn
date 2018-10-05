@@ -1,0 +1,35 @@
+# suite config
+suites:
+    acceptance:
+        actor: AcceptanceTester
+        path: .
+        modules:
+            enabled:
+                - WebDriver:
+                    url: https://www.companyfolders.com
+                    browser: chrome
+                    restart: true
+                    port: 9515
+                    window_size: false
+                    capabilities:
+                      chromeOptions:
+                        binary: "%CHROME_BIN%"
+                - \Helper\Acceptance
+                
+extensions:
+    enabled: [Codeception\Extension\RunFailed]
+
+params: 
+    - env
+
+# additional paths
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+
+settings:
+    shuffle: false
+    lint: true
